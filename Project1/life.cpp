@@ -1,0 +1,7 @@
+#include "main.h"
+#include "renderer.h"
+#include "manager.h"
+#include "input.h"
+#include "model.h"
+#include "gameObject.h"
+#include "life.h"

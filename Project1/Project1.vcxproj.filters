@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{ee359e80-838f-410d-88c2-3e164a56869b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{43835e66-ee26-47d1-92a1-6a30a038bd3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Game">
+      <UniqueIdentifier>{91b6d235-1117-4816-aa64-c7561af99831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Title">
+      <UniqueIdentifier>{426c7cb6-a246-483f-8e06-ee5cd3bf5996}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\ToolClass">
+      <UniqueIdentifier>{1e0a6b35-b586-4e1b-a173-b5fe3b336039}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Game\StandardObject">
+      <UniqueIdentifier>{4f3c48fd-e0f5-404d-92a7-905f7efc1cce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{b44f9ce6-1894-4246-8464-9332bf0ead7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Game\NewObject">
+      <UniqueIdentifier>{ebb61c08-553d-415c-999c-5f435e3bee68}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="modelCtrl.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="model.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="sky.h">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="title.h">
+      <Filter>Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="life.h">
+      <Filter>Framework\ToolClass</Filter>
+    </ClInclude>
+    <ClInclude Include="audio.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="field.h">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClInclude>
+    <ClInclude Include="polygon2D.h">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClInclude>
+    <ClInclude Include="timeManager.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Scene\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="physics.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClInclude>
+    <ClInclude Include="meme.h">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClInclude>
+    <ClInclude Include="manager.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="explosion.h">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClInclude>
+    <ClInclude Include="gameObject.h">
+      <Filter>Scene\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Client.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\NetworkCommon.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Server.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="NetManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="model.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="modelCtrl.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="sky.cpp">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="title.cpp">
+      <Filter>Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="life.cpp">
+      <Filter>Framework\ToolClass</Filter>
+    </ClCompile>
+    <ClCompile Include="audio.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="field.cpp">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClCompile>
+    <ClCompile Include="polygon2D.cpp">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClCompile>
+    <ClCompile Include="timeManager.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Scene\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="physics.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClCompile>
+    <ClCompile Include="meme.cpp">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClCompile>
+    <ClCompile Include="manager.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="explosion.cpp">
+      <Filter>Scene\Game\StandardObject</Filter>
+    </ClCompile>
+    <ClCompile Include="gameObject.cpp">
+      <Filter>Scene\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Client.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\NetworkCommon.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Server.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="NetManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="common.hlsl">
+      <Filter>资源文件</Filter>
+    </FxCompile>
+    <FxCompile Include="unlitTexturePS.hlsl">
+      <Filter>资源文件</Filter>
+    </FxCompile>
+    <FxCompile Include="unlitTextureVS.hlsl">
+      <Filter>资源文件</Filter>
+    </FxCompile>
+    <FxCompile Include="vertexLightingPS.hlsl">
+      <Filter>资源文件</Filter>
+    </FxCompile>
+    <FxCompile Include="vertexLightingVS.hlsl">
+      <Filter>资源文件</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
