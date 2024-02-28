@@ -1,5 +1,5 @@
 #pragma once
-#include "Network/NetworkCommon.h"
+#include "NetworkCommon.h"
 
 class NetManager
 {

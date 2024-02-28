@@ -10,6 +10,7 @@
 #include "explosion.h"
 #include "sky.h"
 #include "audio.h"
+#include "manager.h"
 void Game::Init()
 {
 	{
@@ -21,6 +22,14 @@ void Game::Init()
 
 		AddGameObject<Camera>(layerType_camera);
 		AddGameObject<Sky>(layerType_3DObject)->SetScale(D3DXVECTOR3(50, 50, 50));
+
+		AddGameObject<Player>(layerType_3DObject);
+		Manager::m_Player[0] = AddGameObject<Enemy>(layerType_3DObject);
+		Manager::m_Player[0]->SetPosition(D3DXVECTOR3(0, 0, 1));
+		Manager::m_Player[1] = AddGameObject<Enemy>(layerType_3DObject);
+		Manager::m_Player[1]->SetPosition(D3DXVECTOR3(0, 0, -1)); 
+
+
 		//????????????????????????????????????????????????????????
 
 #pragma region ========== SAMPLE ==========

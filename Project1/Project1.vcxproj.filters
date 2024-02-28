@@ -31,11 +31,11 @@
     <Filter Include="Scene\Game\StandardObject">
       <UniqueIdentifier>{4f3c48fd-e0f5-404d-92a7-905f7efc1cce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Network">
-      <UniqueIdentifier>{b44f9ce6-1894-4246-8464-9332bf0ead7b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Game\NewObject">
       <UniqueIdentifier>{ebb61c08-553d-415c-999c-5f435e3bee68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LinkItem">
+      <UniqueIdentifier>{6cf5b098-22c6-4447-8769-e1bae083c92a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,17 +108,20 @@
     <ClInclude Include="input.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Network\Client.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-    <ClInclude Include="Network\NetworkCommon.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-    <ClInclude Include="Network\Server.h">
-      <Filter>Network</Filter>
-    </ClInclude>
     <ClInclude Include="NetManager.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Client.h">
+      <Filter>LinkItem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\NetworkCommon.h">
+      <Filter>LinkItem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\SerializedTool.h">
+      <Filter>LinkItem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Server.h">
+      <Filter>LinkItem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -188,17 +191,20 @@
     <ClCompile Include="input.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Network\Client.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
-    <ClCompile Include="Network\NetworkCommon.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
-    <ClCompile Include="Network\Server.cpp">
-      <Filter>Network</Filter>
-    </ClCompile>
     <ClCompile Include="NetManager.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Client.cpp">
+      <Filter>LinkItem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\NetworkCommon.cpp">
+      <Filter>LinkItem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\SerializedTool.cpp">
+      <Filter>LinkItem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Server.cpp">
+      <Filter>LinkItem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

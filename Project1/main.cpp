@@ -4,6 +4,7 @@
 #include "timeManager.h"
 #include <iostream>
 
+#include "input.h"
 
 const char* CLASS_NAME = "AppClass";
 const char* WINDOW_NAME = "DX11ƒQ[ƒ€";
@@ -50,18 +51,10 @@ int main(int argc, char* argv[])
 	std::cin >> Manager::m_Client.m_ServerPort;
 	Manager::m_Client.StartUDP();
 
-	//send massage to server
-	while (1)
-	{
-		getchar();
 
-		char msgBuf[LEN_MSG];
-		sprintf(msgBuf, "hello server!");
-		Manager::SendToServer(msgBuf);
-	}
-
-
-
+	char msgBuf[LEN_MSG];
+	sprintf(msgBuf, "hello server!");
+	Manager::SendToServer(msgBuf);
 
 	int ret = WinMain(hInstance, hPreInstance, lpCmdLine, nCmdShow);
 	return 0;
@@ -148,6 +141,37 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 				TimeManager::Instance()->UpdateTime();
 				Manager::Update();
 				Manager::Draw();
+
+
+				//test network
+				if(false)
+				{
+					if (Input::GetKeyTrigger(VK_RETURN))
+					{
+						std::cout << "enter";
+						char msgBuf[LEN_MSG];
+						sprintf(msgBuf, "hello server!");
+						Manager::SendToServer(msgBuf);
+					}
+					else if (Input::GetKeyTrigger(VK_LEFT))
+					{
+						char msgBuf[LEN_MSG];
+						sprintf(msgBuf, "left");
+						Manager::SendToServer(msgBuf);
+					}
+					else if (Input::GetKeyTrigger(VK_RIGHT))
+					{
+						char msgBuf[LEN_MSG];
+						sprintf(msgBuf, "right");
+						Manager::SendToServer(msgBuf);
+					}
+
+					char msgBuf[LEN_MSG];
+					if (Manager::RecvFromServer(msgBuf))
+					{
+
+					}
+				}
 			}
 		}
 	}

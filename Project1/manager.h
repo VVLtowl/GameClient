@@ -1,6 +1,11 @@
 #pragma once
-#include "Network/NetworkCommon.h"
+#include "NetworkCommon.h"
 #include "scene.h"
+
+enum class BHID
+{
+	PLAYER_MOVE,
+};
 
 class Manager
 {
@@ -10,6 +15,7 @@ private:
 public:
 	static short m_PlayerID;
 	static class Client m_Client;
+	static class GameObject* m_Player[2];
 
 public:
 	static void Init();
@@ -17,9 +23,21 @@ public:
 	static void Update();
 	static void Draw();
 
+	//send char
 	static void SendToServer(char* msgBuf);
-	static void RecvFromServer(char* msgBuf);
+	static void SendToServer(std::string msg);
+	static bool RecvFromServer(char* msgBuf);
 	
+	//send command
+	//client send command of input to server
+	//server execute command and update data
+	//server send command and data to client
+	//client update data
+	static void SendPlayerMoveRight();
+	static void SendPlayerMoveLeft();
+	static void PlayerMove();
+
+
 	template <typename T>
 	static void AddGameObject();
 	static Scene* GetScene();
@@ -37,3 +55,4 @@ public:
 		m_Scene->Init();
 	}
 };
+

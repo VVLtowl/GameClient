@@ -13,9 +13,13 @@
 #include "game.h"
 #include "title.h"
 #include "audio.h"
+#include <string>
+
+#include "SerializedTool.h"
 
 Client Manager::m_Client;
 Scene* Manager::m_Scene;//static need call
+GameObject* Manager::m_Player[2] = { nullptr };
 
 void Manager::Init()
 {
@@ -45,6 +49,35 @@ void Manager::Update()
 {
 	Input::Update();
 	m_Scene->Update();
+
+	//update network, update by server data
+	{
+		char msgBuf[LEN_MSG];
+		if (Manager::RecvFromServer(msgBuf))
+		{
+			if (strcmp(msgBuf, "end")==0)
+				//end game
+			{
+
+			}
+			else if (strcmp(msgBuf, "test addr msg!") == 0)
+				//test msg
+			{
+
+			}
+			else
+			{
+				int playerID = static_cast<int>(msgBuf[0])-'0';
+				char posXMsg[LEN_MSG];
+				sprintf(posXMsg, "%s", &msgBuf[1]);
+				float posX = std::stof(posXMsg);
+				D3DXVECTOR3 pos = m_Player[playerID]->Position();
+				pos.x = posX;
+				pos.z = -pow(-1, playerID);
+				m_Player[playerID]->SetPosition(pos);
+			}
+		}
+	}
 }
 
 void Manager::Draw()
@@ -59,17 +92,29 @@ void Manager::Draw()
 
 void Manager::SendToServer(char* msgBuf)
 {
-	//show client ip
-	char ipBuffer[LEN_MSG]; // 定义用于存储 IP 地址字符串的缓冲区
-	inet_ntop(AF_INET, &(m_Client.m_ServerAddr.sin_addr), ipBuffer, INET_ADDRSTRLEN); // 将二进制 IP 地址转换为字符串形式
-	std::cout << "send to server[" << ipBuffer << "]: " << msgBuf << std::endl;
 	m_Client.SendTo(&(m_Client.m_UDPSocket), msgBuf, &(m_Client.m_ServerAddr));
 }
 
-void Manager::RecvFromServer(char* msgBuf)
+void Manager::SendToServer(std::string msg)
 {
-
+	m_Client.SendTo(&(m_Client.m_UDPSocket), &(*(msg.begin())), &(m_Client.m_ServerAddr));
 }
+
+bool Manager::RecvFromServer(char* msgBuf)
+{
+	SOCKADDR_IN tempAddr;
+	return m_Client.RecvFrom(&(m_Client.m_UDPSocket), msgBuf, &(tempAddr))>0;
+}
+
+void Manager::SendPlayerMoveRight()
+{
+	auto msg = new MsgContent();
+	msg->BHID = (int)BHID::PLAYER_MOVE;
+	msg->DataLen = LEN_MSG_DATA_DEFAULT;
+	//msg->Data = (void*);
+	//auto msgBuf = EncodeMsgContent();
+}
+
 
 Scene* Manager::GetScene()
 {

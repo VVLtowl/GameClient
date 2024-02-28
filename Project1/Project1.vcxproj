@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -73,28 +73,28 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <ExternalIncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(ReferencePath)</ReferencePath>
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <ExternalIncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(ReferencePath)</ReferencePath>
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <ExternalIncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(ReferencePath)</ReferencePath>
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <ExternalIncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(ReferencePath)</ReferencePath>
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
@@ -160,6 +160,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Client.h" />
+    <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\NetworkCommon.h" />
+    <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\SerializedTool.h" />
+    <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Server.h" />
     <ClInclude Include="audio.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="camera.h" />
@@ -176,9 +180,6 @@
     <ClInclude Include="model.h" />
     <ClInclude Include="modelCtrl.h" />
     <ClInclude Include="NetManager.h" />
-    <ClInclude Include="Network\Client.h" />
-    <ClInclude Include="Network\NetworkCommon.h" />
-    <ClInclude Include="Network\Server.h" />
     <ClInclude Include="physics.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="polygon2D.h" />
@@ -189,6 +190,10 @@
     <ClInclude Include="title.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Client.cpp" />
+    <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\NetworkCommon.cpp" />
+    <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\SerializedTool.cpp" />
+    <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Server.cpp" />
     <ClCompile Include="audio.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="camera.cpp" />
@@ -205,9 +210,6 @@
     <ClCompile Include="model.cpp" />
     <ClCompile Include="modelCtrl.cpp" />
     <ClCompile Include="NetManager.cpp" />
-    <ClCompile Include="Network\Client.cpp" />
-    <ClCompile Include="Network\NetworkCommon.cpp" />
-    <ClCompile Include="Network\Server.cpp" />
     <ClCompile Include="physics.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="polygon2D.cpp" />
