@@ -27,12 +27,13 @@ public:
 	static void SendToServer(char* msgBuf);
 	static void SendToServer(std::string msg);
 	static bool RecvFromServer(char* msgBuf);
+
 	
 	//send command
-	//client send command of input to server
-	//server execute command and update data
-	//server send command and data to client
-	//client update data
+	//client send command(id) of input to server / client send command(id) and data(class) to server
+	//server execute command(id) and update data(class)
+	//server send command(id) and data(class) to client
+	//client execute command(id) and update data(class)
 	static void SendPlayerMoveRight();
 	static void SendPlayerMoveLeft();
 	static void PlayerMove();
@@ -54,5 +55,8 @@ public:
 		m_Scene = new T();
 		m_Scene->Init();
 	}
+
+private:
+	static void InitNetworkCommand();
 };
 

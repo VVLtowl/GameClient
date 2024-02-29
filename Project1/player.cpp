@@ -27,11 +27,13 @@ void Player::Update()
 	{
 		if (Input::GetKeyTrigger('A'))
 		{
-			Manager::SendToServer("left");
+			//Manager::SendToServer("left");
+			Manager::SendPlayerMoveLeft();
 		}
 		if (Input::GetKeyTrigger('D'))
 		{
-			Manager::SendToServer("right");
+			//Manager::SendToServer("right");
+			Manager::SendPlayerMoveRight();
 		}
 		if (Input::GetKeyPress('W'))
 		{
