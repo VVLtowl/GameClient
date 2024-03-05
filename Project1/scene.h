@@ -107,4 +107,9 @@ public:
 		}
 		return objects;
 	}
+
+	virtual void DeleteGameObject(GameObject* obj)
+	{
+		obj->SetDestroy();
+	}
 };

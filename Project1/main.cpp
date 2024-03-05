@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "input.h"
+#include "NetworkGameData.h"
 
 const char* CLASS_NAME = "AppClass";
 const char* WINDOW_NAME = "DX11ÉQÅ[ÉÄ";
@@ -52,8 +53,14 @@ int main(int argc, char* argv[])
 	Manager::m_Client.StartUDP();
 
 
+	//sprintf(msgBuf, "hello server!");
+	//Manager::SendToServer(msgBuf);
+
+	MsgContent msg;
+	msg.BHID = (int)BHID_C2S::User_TryJoin;
+
 	char msgBuf[LEN_MSG];
-	sprintf(msgBuf, "hello server!");
+	EncodeMsgContent(msg, msgBuf);
 	Manager::SendToServer(msgBuf);
 
 	int ret = WinMain(hInstance, hPreInstance, lpCmdLine, nCmdShow);

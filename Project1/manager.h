@@ -1,6 +1,7 @@
 #pragma once
 #include "NetworkCommon.h"
 #include "scene.h"
+#include <vector>
 
 enum class BHID
 {
@@ -13,9 +14,9 @@ private:
 	static class Scene* m_Scene;
 
 public:
-	static short m_PlayerID;
+	static short m_ThisClientID;
 	static class Client m_Client;
-	static class GameObject* m_Player[2];
+	static std::vector<GameObject*> m_Players;
 
 public:
 	static void Init();
@@ -27,7 +28,7 @@ public:
 	static void SendToServer(char* msgBuf);
 	static void SendToServer(std::string msg);
 	static bool RecvFromServer(char* msgBuf);
-
+	static void TryCloseClient();
 	
 	//send command
 	//client send command(id) of input to server / client send command(id) and data(class) to server
@@ -36,9 +37,9 @@ public:
 	//client execute command(id) and update data(class)
 	static void SendPlayerMoveRight();
 	static void SendPlayerMoveLeft();
-	static void PlayerMove();
+	static void SendClientEnd();
 
-
+	//gameobject management
 	template <typename T>
 	static void AddGameObject();
 	static Scene* GetScene();
@@ -58,5 +59,10 @@ public:
 
 private:
 	static void InitNetworkCommand();
+
+	//other func
+private:
+	static void AddPlayer(D3DXVECTOR3 pos);
+	static void RemovePlayer(int id);
 };
 
