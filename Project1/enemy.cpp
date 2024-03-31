@@ -10,8 +10,7 @@ void Enemy::Init()
 
 	m_Position = D3DXVECTOR3(0, 0, 0);
 	m_Rotation = D3DXVECTOR3(0, 0, 0);
-	m_Scale = D3DXVECTOR3(1, 2, 1);
-
+	m_Scale = D3DXVECTOR3(0.5, 0.5, 1);
 }
 
 void Enemy::Uninit()

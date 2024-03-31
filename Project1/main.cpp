@@ -6,6 +6,8 @@
 
 #include "input.h"
 #include "NetworkGameData.h"
+#include <thread>
+#include <mutex>
 
 const char* CLASS_NAME = "AppClass";
 const char* WINDOW_NAME = "DX11ƒQ[ƒ€";
@@ -15,6 +17,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 
 HWND g_Window;
+
+bool threadOver = false;
+void RecvServerLoop()
+{
+	while (!threadOver)
+	{
+		Manager::update_recvServer.Update();
+	}
+}
 
 HWND GetWindow()
 {
@@ -87,8 +98,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	RegisterClassEx(&wcex);
 
-
-
 	g_Window = CreateWindowEx(0,
 		CLASS_NAME,
 		WINDOW_NAME,
@@ -104,12 +113,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 
 
-	Manager::Init();
-
 
 
 	ShowWindow(g_Window, nCmdShow);
 	UpdateWindow(g_Window);
+
+	Manager::Init();
+
 
 
 
@@ -123,8 +133,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 
 	MSG msg;
+	Manager::StartUpdateRecvServerThread();
+	std::thread recvServer(RecvServerLoop);
 	while(1)
 	{
+		//new update
+		Manager::Update();
+
         if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			if(msg.message == WM_QUIT)
@@ -139,53 +154,15 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         }
 		else
 		{
-			dwCurrentTime = timeGetTime();
-
-			if((dwCurrentTime - dwExecLastTime) >= (1000 / TimeManager::Instance()->FPS()))
-			{
-				dwExecLastTime = dwCurrentTime;
-
-				TimeManager::Instance()->UpdateTime();
-				Manager::Update();
-				Manager::Draw();
-
-
-				//test network
-				if(false)
-				{
-					if (Input::GetKeyTrigger(VK_RETURN))
-					{
-						std::cout << "enter";
-						char msgBuf[LEN_MSG];
-						sprintf(msgBuf, "hello server!");
-						Manager::SendToServer(msgBuf);
-					}
-					else if (Input::GetKeyTrigger(VK_LEFT))
-					{
-						char msgBuf[LEN_MSG];
-						sprintf(msgBuf, "left");
-						Manager::SendToServer(msgBuf);
-					}
-					else if (Input::GetKeyTrigger(VK_RIGHT))
-					{
-						char msgBuf[LEN_MSG];
-						sprintf(msgBuf, "right");
-						Manager::SendToServer(msgBuf);
-					}
-
-					char msgBuf[LEN_MSG];
-					if (Manager::RecvFromServer(msgBuf))
-					{
-
-					}
-				}
-			}
 		}
 	}
 
 	timeEndPeriod(1);
 
 	UnregisterClass(CLASS_NAME, wcex.hInstance);
+
+
+	threadOver = true;
 
 	Manager::Uninit();
 

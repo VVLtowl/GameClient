@@ -37,6 +37,9 @@
     <Filter Include="LinkItem">
       <UniqueIdentifier>{6cf5b098-22c6-4447-8769-e1bae083c92a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Joycon">
+      <UniqueIdentifier>{e16afd60-c5fd-44b0-bcf5-6bbca867f8f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -126,6 +129,39 @@
     <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\NetworkGameData.h">
       <Filter>LinkItem</Filter>
     </ClInclude>
+    <ClInclude Include="Joycon\Buffer.h">
+      <Filter>Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="Joycon\command_ids.h">
+      <Filter>Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="Joycon\connect.h">
+      <Filter>Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="Joycon\exceptions.h">
+      <Filter>Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="Joycon\hidapi.h">
+      <Filter>Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="Joycon\HidDevice.h">
+      <Filter>Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="Joycon\JoyCon.h">
+      <Filter>Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="Joycon\protocol.h">
+      <Filter>Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="Joycon\strings.h">
+      <Filter>Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="Joycon\WLJoyconInput.h">
+      <Filter>Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Updater.h">
+      <Filter>LinkItem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -210,6 +246,36 @@
       <Filter>LinkItem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\NetworkGameData.cpp">
+      <Filter>LinkItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Joycon\command_ids.cpp">
+      <Filter>Joycon</Filter>
+    </ClCompile>
+    <ClCompile Include="Joycon\connect.cpp">
+      <Filter>Joycon</Filter>
+    </ClCompile>
+    <ClCompile Include="Joycon\exceptions.cpp">
+      <Filter>Joycon</Filter>
+    </ClCompile>
+    <ClCompile Include="Joycon\hid.c">
+      <Filter>Joycon</Filter>
+    </ClCompile>
+    <ClCompile Include="Joycon\HidDevice.cpp">
+      <Filter>Joycon</Filter>
+    </ClCompile>
+    <ClCompile Include="Joycon\JoyCon.cpp">
+      <Filter>Joycon</Filter>
+    </ClCompile>
+    <ClCompile Include="Joycon\protocol.cpp">
+      <Filter>Joycon</Filter>
+    </ClCompile>
+    <ClCompile Include="Joycon\strings.cpp">
+      <Filter>Joycon</Filter>
+    </ClCompile>
+    <ClCompile Include="Joycon\WLJoyconInput.cpp">
+      <Filter>Joycon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Updater.cpp">
       <Filter>LinkItem</Filter>
     </ClCompile>
   </ItemGroup>

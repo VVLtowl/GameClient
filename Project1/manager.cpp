@@ -19,10 +19,19 @@
 #include "NetworkGameData.h"
 #include "enemy.h"
 
+#include "Joycon/WLJoyconInput.h"
+
+
+#include <thread>
+#include <mutex>
+
 short Manager::m_ThisClientID;
 Client Manager::m_Client;
 Scene* Manager::m_Scene;//static need call
 std::vector<GameObject*> Manager::m_Players;
+Updater Manager::update_recvServer;
+Updater Manager::update_input;
+Updater Manager::update_scene; 
 
 void Manager::Init()
 {
@@ -33,6 +42,64 @@ void Manager::Init()
 	//network init
 	NetworkManager::InitClient();
 	InitNetworkCommand();
+
+	WLJoyconInput::Init();
+
+	update_recvServer.FPS = 1000;
+	update_input.FPS = 1000;
+	update_scene.FPS = 60;
+
+
+	update_recvServer.SetUpdateEvent(
+		[]() {
+			//update network, update by server data
+//			while(1)
+			{
+				char msgBuf[LEN_MSG];
+				if (Manager::RecvFromServer(msgBuf))
+				{
+					MsgContent msg;
+					DecodeMsgContent(msgBuf, msg);
+					int bhid = msg.BHID;
+
+					if (bhid >= 0)
+					{
+						NetworkManager::Commands[bhid](msg);
+					}
+
+					/*int playerID = static_cast<int>(msgBuf[0])-'0';
+					char posXMsg[LEN_MSG];
+					sprintf(posXMsg, "%s", &msgBuf[1]);
+					float posX = std::stof(posXMsg);
+					D3DXVECTOR3 pos = m_Player[playerID]->Position();
+					pos.x = posX;
+					pos.z = -pow(-1, playerID);
+					m_Player[playerID]->SetPosition(pos);*/
+				}
+				else
+				{
+					//break;
+				}
+			}
+		}
+	);
+	update_input.SetUpdateEvent(
+		[]() {
+			Input::Update();
+			WLJoyconInput::Update();
+		}
+	);
+	update_scene.SetUpdateEvent(
+		[]() {
+			m_Scene->Update();
+
+
+			Renderer::Begin();
+			m_Scene->Draw();
+			Renderer::End();
+		}
+	);
+
 
 	/*m_Scene = new Title();
 	m_Scene->Init();*/
@@ -51,7 +118,6 @@ void Manager::AddGameObject()
 
 void Manager::Uninit()
 {
-
 	m_Scene->Uninit();
 	delete m_Scene;
 
@@ -62,45 +128,14 @@ void Manager::Uninit()
 	Input::Uninit();
 }
 
-void Manager::Update()
+void Manager::StartUpdateRecvServerThread()
 {
-	Input::Update();
-	m_Scene->Update();
-
-	//update network, update by server data
-	{
-		char msgBuf[LEN_MSG];
-		if (Manager::RecvFromServer(msgBuf))
-		{
-			MsgContent msg;
-			DecodeMsgContent(msgBuf, msg);
-			int bhid = msg.BHID;
-
-			if (bhid >= 0)
-			{
-				NetworkManager::Commands[bhid](msg);
-			}
-
-			/*int playerID = static_cast<int>(msgBuf[0])-'0';
-			char posXMsg[LEN_MSG];
-			sprintf(posXMsg, "%s", &msgBuf[1]);
-			float posX = std::stof(posXMsg);
-			D3DXVECTOR3 pos = m_Player[playerID]->Position();
-			pos.x = posX;
-			pos.z = -pow(-1, playerID);
-			m_Player[playerID]->SetPosition(pos);*/
-		}
-	}
 }
 
-void Manager::Draw()
+void Manager::Update()
 {
-
-	Renderer::Begin();
-
-	m_Scene->Draw();
-
-	Renderer::End();
+	update_input.Update();
+	update_scene.Update();
 }
 
 void Manager::TryCloseClient()
@@ -115,12 +150,12 @@ void Manager::TryCloseClient()
 
 void Manager::SendToServer(char* msgBuf)
 {
-	m_Client.SendTo(&(m_Client.m_UDPSocket), msgBuf, &(m_Client.m_ServerAddr));
+	m_Client.SendTo(&(m_Client.m_UDPSocket), msgBuf, &(m_Client.m_ServerAddr),true);
 }
 
 void Manager::SendToServer(std::string msg)
 {
-	m_Client.SendTo(&(m_Client.m_UDPSocket), &(*(msg.begin())), &(m_Client.m_ServerAddr));
+	m_Client.SendTo(&(m_Client.m_UDPSocket), &(*(msg.begin())), &(m_Client.m_ServerAddr),true);
 }
 
 bool Manager::RecvFromServer(char* msgBuf)
@@ -161,7 +196,68 @@ void Manager::SendPlayerMoveLeft()
 	SendToServer(msgBuf);
 }
 
+void Manager::SendPlayerMoveUp()
+{
+	Data_C2S_PlayerMove data;
+	data.id = m_ThisClientID;
+	data.leftRight = 0;
+	data.upDown = 1;
 
+	MsgContent msg;
+	msg.BHID = (int)BHID_C2S::Player_InputMove;
+	msg.DataLen = sizeof(Data_C2S_PlayerMove);
+	msg.Data = (void*)(&data);
+
+	auto msgBuf = EncodeMsgContent(msg, nullptr);
+	SendToServer(msgBuf);
+}
+
+void Manager::SendPlayerMoveDown()
+{
+	Data_C2S_PlayerMove data;
+	data.id = m_ThisClientID;
+	data.leftRight = 0;
+	data.upDown = -1;
+
+	MsgContent msg;
+	msg.BHID = (int)BHID_C2S::Player_InputMove;
+	msg.DataLen = sizeof(Data_C2S_PlayerMove);
+	msg.Data = (void*)(&data);
+
+	auto msgBuf = EncodeMsgContent(msg, nullptr);
+	SendToServer(msgBuf);
+}
+
+void Manager::SendPlayerMove(float x, float z)
+{
+	Data_C2S_PlayerMove data;
+	data.id = m_ThisClientID;
+	data.leftRight = x;
+	data.upDown = z;
+
+	MsgContent msg;
+	msg.BHID = (int)BHID_C2S::Player_InputMove;
+	msg.DataLen = sizeof(Data_C2S_PlayerMove);
+	msg.Data = (void*)(&data);
+
+	auto msgBuf = EncodeMsgContent(msg, nullptr);
+	SendToServer(msgBuf);
+}
+
+void Manager::SendPlayerHit(float rot)
+{
+	Data_C2S_PlayerHit data;
+	data.id = m_ThisClientID;
+	data.rot = rot;
+
+	MsgContent msg;
+	msg.BHID = (int)BHID_C2S::Player_InputHit;
+	msg.DataLen = sizeof(data);
+	msg.Data = (void*)(&data);
+
+	auto msgBuf = EncodeMsgContent(msg, nullptr);
+	SendToServer(msgBuf);
+}
 
 void Manager::SendClientEnd()
 {
@@ -177,6 +273,14 @@ void Manager::SendClientEnd()
 	SendToServer(msgBuf);
 }
 
+GameObject* Manager::GetThisPlayerObj()
+{
+	if (m_ThisClientID>=0&&m_ThisClientID<m_Players.size())
+	{
+		return m_Players[m_ThisClientID];
+	}
+	return nullptr;
+}
 
 
 Scene* Manager::GetScene()
@@ -276,6 +380,25 @@ void Manager::InitNetworkCommand()
 			//m_Player[1]->SetPosition(pos);
 
 
+		});
+	NetworkManager::SetCommand(
+		BHID_S2C::SyncPlayerState,
+		[&](const MsgContent& msg)
+		{
+			auto data = (Data_S2C_PlayerState*)msg.Data;
+
+			//update player pos
+			for (int i = 0; i < m_Players.size(); i++)
+			{
+				PlayerStateType state = (PlayerStateType)(data->state[i]);
+
+				D3DXVECTOR3 scl = { 0.5,0.5,0.5 };
+				if (state == PlayerStateType::Hit)
+				{
+					scl*= 2;
+				}
+				m_Players[i]->SetScale(scl);
+			}
 		});
 	NetworkManager::SetCommand(
 		BHID_S2C::ApproveQuit,

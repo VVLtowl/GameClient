@@ -73,28 +73,28 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameClient\Project1-master\Project1-master\Project1\Joycon;D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(ReferencePath)</ReferencePath>
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameClient\Project1-master\Project1-master\Project1\Joycon;D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(ReferencePath)</ReferencePath>
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameClient\Project1-master\Project1-master\Project1\Joycon;D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(ReferencePath)</ReferencePath>
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameClient\Project1-master\Project1-master\Project1\Joycon;D:\HAL\GM31\MyWork\Winsock\WinsockGame\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(ReferencePath)</ReferencePath>
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
@@ -106,6 +106,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,6 +122,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,6 +138,7 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,6 +154,7 @@
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -165,6 +169,7 @@
     <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\NetworkGameData.h" />
     <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\SerializedTool.h" />
     <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Server.h" />
+    <ClInclude Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Updater.h" />
     <ClInclude Include="audio.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="camera.h" />
@@ -174,6 +179,16 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gameObject.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="Joycon\Buffer.h" />
+    <ClInclude Include="Joycon\command_ids.h" />
+    <ClInclude Include="Joycon\connect.h" />
+    <ClInclude Include="Joycon\exceptions.h" />
+    <ClInclude Include="Joycon\hidapi.h" />
+    <ClInclude Include="Joycon\HidDevice.h" />
+    <ClInclude Include="Joycon\JoyCon.h" />
+    <ClInclude Include="Joycon\protocol.h" />
+    <ClInclude Include="Joycon\strings.h" />
+    <ClInclude Include="Joycon\WLJoyconInput.h" />
     <ClInclude Include="life.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="manager.h" />
@@ -196,6 +211,7 @@
     <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\NetworkGameData.cpp" />
     <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\SerializedTool.cpp" />
     <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Server.cpp" />
+    <ClCompile Include="..\..\..\..\GameNetworkCommon\GameNetworkCommon\GameNetworkCommon\Updater.cpp" />
     <ClCompile Include="audio.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="camera.cpp" />
@@ -205,6 +221,15 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gameObject.cpp" />
     <ClCompile Include="input.cpp" />
+    <ClCompile Include="Joycon\command_ids.cpp" />
+    <ClCompile Include="Joycon\connect.cpp" />
+    <ClCompile Include="Joycon\exceptions.cpp" />
+    <ClCompile Include="Joycon\hid.c" />
+    <ClCompile Include="Joycon\HidDevice.cpp" />
+    <ClCompile Include="Joycon\JoyCon.cpp" />
+    <ClCompile Include="Joycon\protocol.cpp" />
+    <ClCompile Include="Joycon\strings.cpp" />
+    <ClCompile Include="Joycon\WLJoyconInput.cpp" />
     <ClCompile Include="life.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="manager.cpp" />
